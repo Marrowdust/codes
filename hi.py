@@ -4,33 +4,36 @@ import pygame
 import os
 
 pygame.mixer.init()
-pygame.mixer.music.load("/home/me/codes/A Moment's Peace [ja7dXwjIEKM].mp3")
+pygame.mixer.music.load("D:\Codes\codes-main\A Moment's Peace [ja7dXwjIEKM].mp3")
 pygame.mixer.music.play(loops=-1, start=0.0)
 
 def room(num,metrics):
- os.system('clear')
  print_metrics(metrics)
  if (num==1):
   metrics['hp']+=30
-  os.system('clear')
-  print_metrics(metrics)
+  print_status(metrics)
   print("This is Room number one\n")
   print("You found A Medkit")
   input("press any key to continue")
-  os.system('clear')
+  os.system('cls')
  elif(num==2):
-  
   print("this is room number two\n")
   print("you found a weak enemy\n")
   if(metrics['Sword']>=1):
    print("You killed the enemy and your sword is broken\n")
    metrics['Sword']-=1
+   print_status(metrics)
+   
   else:
    print("enemy hit you and you escaped like a coward\n")
    metrics['hp']-=30
+   print_status(metrics)
    if(metrics['hp']<=0):
+       metrics['hp']=0
        print("in a humiliating turn of events as you try to escape the weakling enemy you slowly bleed out until your hp has been depleted a shame on top of the wound , you have been killed by the weak enemy\n")
        print("You are Dead\n")
+       print_status(metrics)
+  os.system('cls')     
  elif(num==3):
   
   print("This is room number three\n")
@@ -100,9 +103,11 @@ def room(num,metrics):
                  print("You Are dead\n")
      elif(choice=='l'):
          print("Like a traditional coward you leave the room with shame and fear from the ominous entity you witnessed and decided to accept all your progress just for a brink of hope\n")
-         for i in metrics:
-             metrics[i+1]=0
+         
+         for key in metrics.keys():
+            metrics[key]=0
          print("Just like you asked for all your items have been reset and your hopes for survival are reduced but this time with a bearing of shame\n")
+     input("press any key to continue")    
  elif(num==8):
      
      print("This is room number eight\n")
@@ -125,23 +130,39 @@ def room(num,metrics):
          print("you hear a deep voice from across the room\n")
          print("you really dare approach me?")
          pygame.mixer.init()
-         pygame.mixer.music.load("/home/me/codes/DARK SOULS Ⅲ [-armx8FIpYU].mp3")
+         pygame.mixer.music.load("D:\Codes\codes-main\DARK SOULS Ⅲ [-armx8FIpYU].mp3")
          pygame.mixer.music.play(loops=-1, start=0.0)
+ os.system('cls')
  return metrics        
 
 def print_metrics(metrics):
     print("HP: "+str(metrics['hp'])+" blessing: "+str(metrics['blessing'])+" Curse: "+str(metrics['Curse'])+" Sword: "+str(metrics['Sword'])+" Spell: "+str(metrics['Spell'])+" Strongspell: "+str(metrics['Strongspell']))
+
 metrics={"hp":100,"blessing":0,"Curse":0,"Sword":0,"Spell":0,"Strongspell":0}
 
 # Create a list of numbers from 1 to 10
 
 numbers = list(range(1, 11))
-
+# Function to print the status bar at the top
+def print_status(metricss):
+    # Move the cursor to the top of the terminal
+    print("\033[H", end="")
+    # Print each metric in the dictionary
+    status = " ".join(f"{key}: {value}" for key, value in metricss.items())
+    print(status)
 # While there are still numbers left to choose from
 while numbers:
-    print("Choose your room number")
+    os.system('cls')
+    print("Choose a number")
     chosen_number = int(input())
-    room(chosen_number,metrics)
+    room((chosen_number+2)%10,metrics)
+    os.system('cls')
     # Remove the chosen number from the list so it won't be chosen again
     numbers.remove(chosen_number)
-    print("wka eg")
+    print("hope that's enough")
+
+
+
+
+
+       
