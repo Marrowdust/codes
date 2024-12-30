@@ -144,3 +144,4 @@ while numbers:
     room(chosen_number,metrics)
     # Remove the chosen number from the list so it won't be chosen again
     numbers.remove(chosen_number)
+    print("wka eg")
