@@ -46,11 +46,17 @@ for(int i = 0; i < l; i++){
     return mergedarray;
 }
 int main(){
-int size=10;
+int size=20;
 int * arr =new int [size];
+
+
    for(int i = 0; i < size; i++) {
         arr[i] = size - i;  // This will fill it with 10,9,8,7,6,5,4,3,2,1
     }
+    for(int i=0;i<size;i++){
+    cout<<arr[i]<<"\t";
+}
+cout<<endl;
 arr=QUICKSORT(arr,size);
 
 for(int i=0;i<size;i++){
