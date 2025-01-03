@@ -22,8 +22,8 @@ void multiply(int a[SIZE][SIZE], int b[SIZE][SIZE], int result[SIZE][SIZE]) {
     }
 }
 
-// Function to calculate matrix power
-int (*FibPower(int arr[SIZE][SIZE], int power))[SIZE] {
+// Function to calculate matrix(Number)
+int (*FibPower(int arr[SIZE][SIZE], int(Number)))[SIZE] {
     static int result[SIZE][SIZE] = {0}; // `static` to avoid returning a local variable
     static int temp[SIZE][SIZE]; // Temporary matrix to store multiplication results
 
@@ -33,10 +33,10 @@ int (*FibPower(int arr[SIZE][SIZE], int power))[SIZE] {
     result[1][0] = 0;
     result[1][1] = 1;
 
-    // Matrix exponentiation: multiply result by arr for (power - 1) times
-    while (power > 0) {
-        if (power % 2 == 1) {
-            multiply(result, arr, temp); // Multiply result by arr when the power is odd
+    // Matrix exponentiation: multiply result by arr for (Number) - 1) times
+    while (Number > 0) {
+        if (Number % 2 == 1) {
+            multiply(result, arr, temp); // Multiply result by arr when the(Number) is odd
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j < SIZE; j++) {
                     result[i][j] = temp[i][j];
@@ -51,24 +51,20 @@ int (*FibPower(int arr[SIZE][SIZE], int power))[SIZE] {
             }
         }
         
-        power /= 2; // Reduce the power
+    (Number) /= 2; // Reduce the(Number)
     }
 
     return result; // Return the pointer to the result matrix
 }
 
 int main() {
-    int arr[SIZE][SIZE] = {{1, 1}, {1, 0}}; // The matrix to raise to a power
-    int (*result)[SIZE] = FibPower(arr, 5); // Calculate the power of the matrix
+    int arr[SIZE][SIZE] = {{1, 1}, {1, 0}}; // The matrix to raise to a(Number)
+    int (*result)[SIZE] = FibPower(arr, 10); // Calculate the(Number) of the matrix
 
     // Print the result
-    cout << "Matrix raised to the power of 5 is:" << endl;
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            cout << result[i][j] << "\t";
-        }
+    cout<<"Fibonacci of 5 is "<<result[1][0];
         cout << endl;
-    }
+    
 
     return 0;
 }
