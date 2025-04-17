@@ -19,7 +19,7 @@ int main(){
 int number=1000;
 int power=2;
 int PowerNUmber=Power(number,power);
-cout<<PowerNUmber;
+cout<<PowerNUmber<<endl;
 return 0;
 
 }
